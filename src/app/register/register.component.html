@@ -1,0 +1,30 @@
+<div class="col-xs-12 col-sm-8 col-ls-4 center-layout">
+  <h1 class="text-center">Register User</h1>
+  <form #userForm="ngForm">
+    <div class="form-group">
+      <label for="usrName">User name:
+        <span *ngIf="usrName.errors && (usrName.dirty || usrName.touched)" class="invalid-text text-danger">Name is not blank!</span>
+      </label>
+      <input type="text" required #usrName="ngModel" name="usrName" class="form-control" id="usrName"  [(ngModel)]="user.name">
+
+    </div>
+    <div class="form-group">
+      <label for="pass">Password:
+        <span *ngIf="errorMessage" class="text-danger">Password and re-password not match!</span>
+        <span *ngIf="pass.errors && (pass.dirty || pass.touched)" class="invalid-text text-danger">Password is not blank!</span>
+      </label>
+      <input type="password" name="pass" #pass="ngModel" required class="form-control" id="pass" (blur)="validateRePass()" [(ngModel)]="user.password">
+    </div>
+    <div class="form-group">
+      <label for="re-pass">Re-password:
+        <span *ngIf="rePass.errors && (rePass.dirty || rePass.touched)" class="invalid-text text-danger">Re-password is not blank!</span>
+        <span *ngIf="errorMessage" class="text-danger">Password and re-password not match!</span>
+      </label>
+      <input type="password" name="rePass" #rePass="ngModel" required class="form-control" id="re-pass" (blur)="validateRePass()" [(ngModel)]="user.rePassword">
+    </div>
+    <div class="form-group text-center">
+      <button type="button" class="btn btn-primary col-4" (click)="register()">Register</button>
+      <button type="reset" class="btn btn-primary col-4" (click)="reset()">Reset</button>
+    </div>
+  </form>
+</div>

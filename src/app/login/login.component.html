@@ -1,0 +1,23 @@
+<div class="center-layout col-xs-12 col-sm-6 col-lg-3">
+  <h1 class="text-center">Login App</h1>
+  <form #loginForm="ngForm">
+    <div class="form-group">
+      <label>User name:
+        <span *ngIf="usrName.errors && (usrName.dirty || usrName.touched)" class="invalid-text text-danger">User name is not blank!</span>
+      </label>
+      <input type="text" name="usrName" required #usrName="ngModel"
+             [(ngModel)]="user.name" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label>Pass word:
+        <span *ngIf="pass.errors && (pass.dirty || pass.touched)" class="invalid-text text-danger">Password is not blank!</span>
+      </label>
+      <input type="password" name="pass" required #pass="ngModel" [(ngModel)]="user.password"
+             class="form-control" />
+    </div>
+    <div class="form-group text-center">
+      <button type="button" class="btn btn-primary col-4" (click)="login()">Login</button>
+      <button type="reset" class="btn btn-primary col-4" (click)="reset()">Reset</button>
+    </div>
+  </form>
+</div>
